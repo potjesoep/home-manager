@@ -44,6 +44,10 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    extraConfig = ''
+      set number
+      set relativenumber
+    '';
   };
 
   # autoconnect virt-manager to qemu

@@ -49,6 +49,7 @@
       set relativenumber
     '';
   };
+  programs.helix.enable = true;
 
   # autoconnect virt-manager to qemu
   dconf.settings = {

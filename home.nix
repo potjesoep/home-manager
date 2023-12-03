@@ -37,6 +37,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
+      core.editor = "nvim -c 'vsplit term://git --no-pager diff --cached | wincmd h'";
     };
   };
 
@@ -102,12 +103,19 @@
         config = ''
           " Start NERDTree. If a file is specified, move the cursor to its window.
           autocmd StdinReadPre * let s:std_in=1
-          autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+          autocmd VimEnter * NERDTree | if argc() > 0 && !isdirectory(argv()[0]) || exists("s:std_in") | wincmd p | endif
+          " Start NERDTree when Vim starts with a directory argument.
+          autocmd StdinReadPre * let s:std_in=1
+          autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
           " Exit Vim if NERDTree is the only window remaining in the only tab.
           autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
           " Close the tab if NERDTree is the only window remaining in it.
           autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
         '';
+      }
+      {
+        plugin = suda-vim;
+        config = "let g:suda_smart_edit = 1";
       }
       nerdtree-git-plugin
       vim-nerdtree-syntax-highlight

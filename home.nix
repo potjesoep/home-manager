@@ -38,9 +38,10 @@
     userName = "Mia Winter Schat";
     userEmail = "nekonoor@proton.me";
     extraConfig = {
-      init.defaultBranch = "main";
-      safe.directory = "/etc/nixos";
       core.editor = "nvim -c 'vsplit term://git --no-pager diff --cached | wincmd h'";
+      init.defaultBranch = "main";
+      pull.rebase = true;
+      safe.directory = "/etc/nixos";
     };
   };
 

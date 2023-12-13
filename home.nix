@@ -117,10 +117,6 @@
           autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
         '';
       }
-      {
-        plugin = suda-vim;
-        config = "let g:suda_smart_edit = 1";
-      }
       nerdtree-git-plugin
       vim-nerdtree-syntax-highlight
       vim-nerdtree-tabs

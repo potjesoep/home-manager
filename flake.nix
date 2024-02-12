@@ -26,9 +26,13 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-	  ./home.nix
+          ./home.nix
+          ./modules/editor.nix
+          ./modules/git.nix
+          ./modules/shell.nix
+          ./modules/termutils.nix
           nix-index-database.hmModules.nix-index
-	];
+        ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

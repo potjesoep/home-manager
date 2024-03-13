@@ -2,10 +2,7 @@
   # terminal utils
   programs.bat.enable = true;
   programs.btop.enable = true;
-  programs.eza = {
-    enable = true;
-    enableAliases = true;
-  };
+  programs.eza.enable = true;
   programs.fzf.enable = true;
   programs.ripgrep.enable = true;
   programs.starship.enable = true;

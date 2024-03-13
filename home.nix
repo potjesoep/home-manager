@@ -73,6 +73,7 @@
     # EDITOR = "emacs";
     fish_greeting = "";
     fish_prompt_pwd_dir_length = 0;
+    fish_user_paths = "~/.local/bin";
   };
 
   # Let Home Manager install and manage itself.

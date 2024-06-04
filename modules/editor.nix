@@ -6,6 +6,9 @@
     enable = true;
     defaultEditor = true;
     extraConfig = ''
+      "Set to vim colorscheme
+      colorscheme vim
+
       "Split to right/below instead of left/up by default
       set splitright
       set splitbelow
@@ -74,6 +77,7 @@
         '';
       }
       nerdtree-git-plugin
+      telescope-nvim
       vim-nerdtree-syntax-highlight
       vim-nerdtree-tabs
       vim-nix

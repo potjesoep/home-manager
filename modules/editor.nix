@@ -6,8 +6,8 @@
     enable = true;
     defaultEditor = true;
     extraConfig = ''
-      "Set to vim colorscheme
-      colorscheme vim
+      "Set to habamax colorscheme
+      colorscheme habamax
 
       "Split to right/below instead of left/up by default
       set splitright
@@ -77,7 +77,19 @@
         '';
       }
       nerdtree-git-plugin
-      telescope-nvim
+      {
+        plugin = telescope-nvim;
+        config = ''
+          "Set leader key
+          let mapleader = ","
+
+          " Find files using Telescope command-line sugar.
+          nnoremap <leader>ff <cmd>Telescope find_files<cr>
+          nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+          nnoremap <leader>fb <cmd>Telescope buffers<cr>
+          nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+        '';
+      }
       vim-nerdtree-syntax-highlight
       vim-nerdtree-tabs
       vim-nix

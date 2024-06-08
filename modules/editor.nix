@@ -61,6 +61,9 @@
       set undoreload=10000
     '';
     plugins = with pkgs.vimPlugins; [
+      nerdtree-git-plugin
+      vim-nerdtree-syntax-highlight
+      vim-nerdtree-tabs
       {
         plugin = nerdtree;
         config = ''
@@ -89,17 +92,23 @@
           nnoremap <leader>fh <cmd>Telescope help_tags<cr>
         '';
       }
+      coq-artifacts
+      coq-thirdparty
+      nvim-lspconfig
       {
-        plugin = nvim-lspconfig;
+        plugin = coq_nvim;
         config = ''
           lua << EOF
-            require'lspconfig'.hls.setup{}
+            vim.g.coq_settings = {
+              auto_start = 'shut-up',
+            }
+            local lsp = require "lspconfig"
+            local coq = require "coq"
+
+            lsp.hls.setup(coq.lsp_ensure_capabilities())
           EOF
         '';
       }
-      nerdtree-git-plugin
-      vim-nerdtree-syntax-highlight
-      vim-nerdtree-tabs
       vim-nix
     ];
     viAlias = true;

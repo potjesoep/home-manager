@@ -76,7 +76,6 @@
           autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
         '';
       }
-      nerdtree-git-plugin
       {
         plugin = telescope-nvim;
         config = ''
@@ -90,6 +89,15 @@
           nnoremap <leader>fh <cmd>Telescope help_tags<cr>
         '';
       }
+      {
+        plugin = nvim-lspconfig;
+        config = ''
+          lua << EOF
+            require'lspconfig'.hls.setup{}
+          EOF
+        '';
+      }
+      nerdtree-git-plugin
       vim-nerdtree-syntax-highlight
       vim-nerdtree-tabs
       vim-nix

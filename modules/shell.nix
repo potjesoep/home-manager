@@ -15,6 +15,7 @@
       nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";
       hr = "home-manager switch --flake .#cuddles";
       sr = "sudo nixos-rebuild switch";
+      fb = "fastboot boot";
     };
   };
 }

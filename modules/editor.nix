@@ -110,6 +110,8 @@
         '';
       }
       vim-nix
+      render-markdown-nvim
+      csvview-nvim
     ];
     viAlias = true;
     vimAlias = true;

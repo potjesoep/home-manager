@@ -111,7 +111,51 @@
       }
       vim-nix
       render-markdown-nvim
-      csvview-nvim
+      {
+        plugin = csvview-nvim;
+        config = ''
+          lua << EOF
+            local csv = require("csvview")
+
+            csv:setup({
+              parser = {
+                async_chunksize = 50,
+
+                delimiter = {
+                  default = ",",
+                  ft = {
+                    tsv = "\t",
+                  },
+                },
+
+                quote_char = '"',
+
+                comments = {
+                  "#",
+                  "--",
+                  "//",
+                },
+              },
+              view = {
+                min_column_width = 1,
+                spacing = 0,
+                display_mode = "border",
+                header_lnum = 1,
+
+                sticky_header = {
+                  enabled = true,
+                  separator = "─",
+                },
+              },
+
+              keymaps = {},
+
+              actions = {
+              },
+            })
+          EOF
+        '';
+      }
     ];
     viAlias = true;
     vimAlias = true;

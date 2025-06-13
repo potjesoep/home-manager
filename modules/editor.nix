@@ -61,6 +61,7 @@
       set undoreload=10000
     '';
     plugins = with pkgs.vimPlugins; [
+      auto-save-nvim
       nerdtree-git-plugin
       vim-nerdtree-syntax-highlight
       vim-nerdtree-tabs

@@ -102,6 +102,7 @@
           lua << EOF
             vim.g.coq_settings = {
               auto_start = 'shut-up',
+              xdg = true,
             }
             local lsp = require "lspconfig"
             local coq = require "coq"
@@ -155,6 +156,12 @@
               },
             })
           EOF
+        '';
+      }
+      {
+        plugin = markdown-preview-nvim;
+        config = ''
+          autocmd BufEnter *.md MarkdownPreview
         '';
       }
     ];

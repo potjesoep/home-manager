@@ -31,7 +31,7 @@
           ./modules/git.nix
           ./modules/shell.nix
           ./modules/termutils.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
         ];
 
         # Optionally use extraSpecialArgs

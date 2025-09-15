@@ -160,9 +160,9 @@
       }
       {
         plugin = markdown-preview-nvim;
-        config = ''
-          autocmd BufEnter *.md MarkdownPreview
-        '';
+        #config = ''
+        #  autocmd BufEnter *.md MarkdownPreview
+        #'';
       }
     ];
     viAlias = true;

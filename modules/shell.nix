@@ -12,10 +12,11 @@
       ap = "adb push $argv /sdcard/Download";
     };
     shellAliases = {
-      nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";
-      hr = "home-manager switch --flake .#cuddles";
-      sr = "sudo nixos-rebuild switch";
       fb = "fastboot boot";
+      hr = "home-manager switch --flake .#cuddles";
+      nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";
+      rbs = "rb-scrobbler -f /run/media/cuddles/rockbox/.scrobbler.log -n delete-on-success -o +2";
+      sr = "sudo nixos-rebuild switch";
     };
   };
 }

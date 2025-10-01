@@ -16,7 +16,7 @@
       hr = "home-manager switch --flake .#cuddles";
       nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";
       rbsb = "rb-scrobbler -f '/run/media/cuddles/rockbox/.scrobbler.log' -n delete-on-success -o +2";
-      rbrs = "rsync -rvu --delete --progress '/mnt/media/Music_curated/' '/run/media/cuddles/rockbox/Music_curated/'";
+      rbrs = "rsync -rvuP --del '/mnt/media/Music_curated/' '/run/media/cuddles/rockbox/Music_curated/'";
       sr = "sudo nixos-rebuild switch";
     };
   };

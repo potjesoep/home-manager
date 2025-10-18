@@ -61,7 +61,7 @@
       set undoreload=10000
 
       "Auto Generate PDF on saving briefje
-      autocmd BufWrite */briefjes/* !./convert.fish %
+      autocmd BufWrite */briefjes/*.md !./convert.fish %
     '';
     plugins = with pkgs.vimPlugins; [
       auto-save-nvim

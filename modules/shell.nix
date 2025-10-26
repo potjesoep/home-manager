@@ -15,8 +15,9 @@
       fb = "fastboot boot";
       hr = "home-manager switch --flake .#cuddles";
       nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";
-      rbsb = "rb-scrobbler -f '/run/media/cuddles/rockbox/.scrobbler.log' -n delete-on-success -o +2";
       rbrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/mnt/media/Music_curated/' '/run/media/cuddles/rockbox/Music_curated/'";
+      rbsb = "rb-scrobbler -f '/run/media/cuddles/rockbox/.scrobbler.log' -n delete-on-success -o +2";
+      rbum = "umount /run/media/cuddles/rockbox";
       sr = "sudo nixos-rebuild switch";
     };
   };

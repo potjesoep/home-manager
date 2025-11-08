@@ -62,6 +62,29 @@
 
       "Auto Generate PDF on saving briefje
       autocmd BufWrite */briefjes/*.md !./convert.fish %
+
+      "Simple workman remap from: https://axiomatic.neophilus.net/workman-layout-for-vim/
+      nnoremap l o
+      nnoremap o l
+      nnoremap L O
+      nnoremap O L
+      nnoremap j n
+      nnoremap n j
+      nnoremap J N
+      nnoremap N J
+      nnoremap gn gj
+      nnoremap gj gn
+      nnoremap k e
+      nnoremap e k
+      nnoremap K E
+      nnoremap E <nop>
+      nnoremap gk ge
+      nnoremap ge gk
+      nnoremap h y
+      onoremap h y
+      nnoremap y h
+      nnoremap H Y
+      nnoremap Y H
     '';
     plugins = with pkgs.vimPlugins; [
       auto-save-nvim

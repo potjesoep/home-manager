@@ -17,7 +17,7 @@
       hbum = "umount /run/media/cuddles/android";
       hr = "home-manager switch --flake .#cuddles";
       nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";
-      rbbu = "time rsync -hvrltD --del --exclude=Music_curated --exclude=Speakertapes --modify-window=1 --stats --info=progress2 '/run/media/cuddles/rockbox/' '/mnt/media/rbbackup/'";
+      rbbu = "time rsync -hvrltD --del --exclude=Music_curated --exclude=Speakertapes --modify-window=1 --stats --info=progress2 '/run/media/cuddles/rockbox/' '/home/cuddles/Backups/rbbackup/'";
       rbrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/mnt/media/Music_curated/' '/run/media/cuddles/rockbox/Music_curated/'";
       rbsb = "rb-scrobbler -f '/run/media/cuddles/rockbox/.scrobbler.log' -n delete-on-success -o +2";
       rbum = "umount /run/media/cuddles/rockbox";

@@ -61,7 +61,7 @@
       set undoreload=10000
 
       "Auto Generate PDF on saving briefje
-      autocmd BufWrite */briefjes/*.md !./convert.fish %
+      autocmd BufWritePost */briefjes/*.md !./convert.fish %
 
       "Simple workman remap from: https://axiomatic.neophilus.net/workman-layout-for-vim/
       nnoremap l o

@@ -13,7 +13,7 @@
     };
     shellAliases = {
       fb = "fastboot boot";
-      hbrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/mnt/media/magnum_opus/' '/run/media/cuddles/android/Music/'";
+      hbrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/home/cuddles/magnum_opus/' '/run/media/cuddles/android/Music/'";
       hbum = "umount /run/media/cuddles/android";
       hr = "home-manager switch --flake .#cuddles";
       nfu = "git pull && nix flake update && git add . && git commit -m 'chore: update nix flake' && git push";

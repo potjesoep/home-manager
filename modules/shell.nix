@@ -12,6 +12,8 @@
       ap = "adb push $argv /sdcard/Download";
     };
     shellAliases = {
+      dcrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/run/media/cuddles/disk/' '/mnt/media/Photos/Sony/'";
+      dcum = "umount /run/media/cuddles/disk/";
       fb = "fastboot boot";
       hbrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/home/cuddles/magnum_opus/' '/run/media/cuddles/android/Music/'";
       hbum = "umount /run/media/cuddles/android";

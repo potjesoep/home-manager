@@ -15,6 +15,8 @@
       dcrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/run/media/cuddles/disk/' '/mnt/media/Photos/Sony/'";
       dcum = "umount /run/media/cuddles/disk/";
       fb = "fastboot boot";
+      fprs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/run/media/cuddles/MOOSIC/Photos/' '/mnt/media/Photos/Flipphone/'";
+      fpum = "umount /run/media/cuddles/MOOSIC";
       hbrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/home/cuddles/magnum_opus/' '/run/media/cuddles/android/Music/'";
       hbum = "umount /run/media/cuddles/android";
       hr = "home-manager switch --flake .#cuddles";

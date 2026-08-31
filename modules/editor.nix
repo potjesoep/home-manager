@@ -4,6 +4,8 @@
   # enable neovim and set it as the default editor
   programs.neovim = {
     enable = true;
+    withPython3 = true;
+    withRuby = true;
     defaultEditor = true;
     extraConfig = ''
       "Set to habamax colorscheme
@@ -93,6 +95,7 @@
       vim-nerdtree-tabs
       {
         plugin = nerdtree;
+        type = "viml";
         config = ''
           " Start NERDTree. If a file is specified, move the cursor to its window.
           autocmd StdinReadPre * let s:std_in=1
@@ -108,6 +111,7 @@
       }
       {
         plugin = telescope-nvim;
+        type = "viml";
         config = ''
           "Set leader key
           let mapleader = ","
@@ -119,69 +123,92 @@
           nnoremap <leader>fh <cmd>Telescope help_tags<cr>
         '';
       }
-      coq-artifacts
-      coq-thirdparty
       nvim-lspconfig
+      coc-json
+      coc-pyright
+      coc-rust-analyzer
+      coc-clangd
       {
-        plugin = coq_nvim;
+        plugin = coc-nvim;
+        type = "lua";
         config = ''
-          lua << EOF
-            vim.g.coq_settings = {
-              auto_start = 'shut-up',
-              xdg = true,
-            }
-            local lsp = require "lspconfig"
-            local coq = require "coq"
+          vim.g.coc_global_extensions = { 'coc-json', 'coc-pyright', 'coc-rust-analyzer', 'coc-clangd' }
 
-            lsp.hls.setup(coq.lsp_ensure_capabilities())
-          EOF
+          vim.opt.backup = false
+          vim.opt.writebackup = false
+          vim.opt.updatetime = 300
+          vim.opt.signcolumn = 'yes'
+          vim.opt.laststatus = 2
+ 
+          -- Show coc.nvim status, including extension installation progress
+          vim.opt.statusline:prepend('%{coc#status()}')
+           
+          local keyset = vim.keymap.set
+          function _G.check_back_space()
+            local col = vim.fn.col('.') - 1
+            return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+          end
+           
+          -- Trigger completion with Tab and navigate the completion menu
+          local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+          keyset('i', '<TAB>', 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+          keyset('i', '<S-TAB>', [[coc#pum#visible() ? coc#pum#prev(1) : "<C-h>"]], opts)
+          keyset('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>"', { silent = true, expr = true })
+           
+          -- Diagnostics and code navigation
+          keyset('n', '[g', '<Plug>(coc-diagnostic-prev)', { silent = true })
+          keyset('n', ']g', '<Plug>(coc-diagnostic-next)', { silent = true })
+          keyset('n', 'gd', '<Plug>(coc-definition)', { silent = true })
+          keyset('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
+          keyset('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
+          keyset('n', 'gr', '<Plug>(coc-references)', { silent = true })
+          keyset('n', '<leader>rn', '<Plug>(coc-rename)', { silent = true })
         '';
       }
       vim-nix
       render-markdown-nvim
       {
         plugin = csvview-nvim;
+        type = "lua";
         config = ''
-          lua << EOF
-            local csv = require("csvview")
+          local csv = require("csvview")
 
-            csv:setup({
-              parser = {
-                async_chunksize = 50,
+          csv:setup({
+            parser = {
+              async_chunksize = 50,
 
-                delimiter = {
-                  default = ",",
-                  ft = {
-                    tsv = "\t",
-                  },
-                },
-
-                quote_char = '"',
-
-                comments = {
-                  "#",
-                  "--",
-                  "//",
-                },
-              },
-              view = {
-                min_column_width = 1,
-                spacing = 0,
-                display_mode = "border",
-                header_lnum = 1,
-
-                sticky_header = {
-                  enabled = true,
-                  separator = "─",
+              delimiter = {
+                default = ",",
+                ft = {
+                  tsv = "\t",
                 },
               },
 
-              keymaps = {},
+              quote_char = '"',
 
-              actions = {
+              comments = {
+                "#",
+                "--",
+                "//",
               },
-            })
-          EOF
+            },
+            view = {
+              min_column_width = 1,
+              spacing = 0,
+              display_mode = "border",
+              header_lnum = 1,
+
+              sticky_header = {
+                enabled = true,
+                separator = "─",
+              },
+            },
+
+            keymaps = {},
+
+            actions = {
+            },
+          })
         '';
       }
       {

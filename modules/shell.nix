@@ -12,6 +12,7 @@
       ap = "adb push $argv /sdcard/Download";
     };
     shellAliases = {
+      cgt = "sensors | rg 'Tctl|junction'";
       dcrs = "time rsync -hvrltD --modify-window=1 --stats --info=progress2 '/run/media/cuddles/disk/' '/mnt/media/Photos/Sony/'";
       dcum = "umount /run/media/cuddles/disk/";
       fb = "fastboot boot";
